@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح قصيدة: عُمان في سجل الدهر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100%;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1538 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 3.2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .poet-info {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .verse-section {
+            margin-bottom: 40px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .verse-section:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .verse-header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .verse-header h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .verse-content {
+            display: none;
+            padding: 25px;
+            background: #fafafa;
+        }
+        
+        .verse-content.active {
+            display: block;
+        }
+        
+        .verse-text {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-right: 4px solid #c41e3a;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 2.2;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+        
+        .analysis-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 18px;
+            background: #e9ecef;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: #2c5aa0;
+            color: white;
+        }
+        
+        .tab-button:hover {
+            background: #495057;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .word-item {
+            background: #f8f9fa;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-right: 3px solid #28a745;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .word-item strong {
+            color: #c41e3a;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .beauty-item {
+            background: #fff3cd;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-right: 3px solid #ffc107;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .rhetoric-item {
+            background: #d1ecf1;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-right: 3px solid #17a2b8;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .quiz-section {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 15px;
+        }
+        
+        .quiz-question {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            margin: 18px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        
+        .quiz-question:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .quiz-answer {
+            display: none;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 20px;
+            margin-top: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        
+        .quiz-answer.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <h1>شرح قصيدة: عُمان في سجل الدهر</h1>
+            <div class="poet-info">
+                <strong>الشاعر:</strong> عبدالله بن علي الخليلي<br>
+                <strong>المصدر:</strong> وحي العقيدة، 1978م
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- المقطع الأول -->
+            <div class="verse-section">
+                <div class="verse-header" onclick="toggleVerse(0)">
+                    <h3>المقطع الأول: دعوة للتأمل والتدبر</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="verse-content">
+                    <div class="verse-text">
+                        قِفْ على العالم حَوْلَ الواقفينَ وَتَأَمَّلْهُ بِعَيْنِ المُبْصِرِينَ<br>
+                        وَتَدَبَّرْ في مَرَائِيهِ تَرَى قُدْرَةَ البَارِي خَيْرَ الْخَالِقِينَ<br>
+                        ثُمَّ حَلِّلْهُ بِفِكْرٍ ثَاقِبٍ تَجِدُ التَّارِيخَ بِالْحَقِّ مَدِينٍ<br>
+                        يَا لَهُ كَمْ قَامَ فِينَا كَاتِبًا يَمْلأُ الأَوْرَاقَ بِالْحَقِّ الْمُبِينِ<br>
+                        يَمْلأُ الأَوْرَاقَ صيتا وَثَنَا وَعُمَانُ الأُمُّ خَيْرُ الْكَاتِبِينَ
+                    </div>
+                    
+                    <div class="analysis-tabs">
+                        <button class="tab-button active" onclick="showTab(0, 0)">شرح المقطع</button>
+                        <button class="tab-button" onclick="showTab(0, 1)">المعجم الشعري</button>
+                        <button class="tab-button" onclick="showTab(0, 2)">المواطن الجمالية</button>
+                        <button class="tab-button" onclick="showTab(0, 3)">الأساليب البلاغية</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="tab-0-0">
+                        <h4>شرح المقطع:</h4>
+                        <div class="beauty-item">
+                            يدعو الشاعر القارئ للتوقف والتأمل في العالم من حولنا بعين البصيرة والفهم العميق، وأن ينظر في مناظر الكون ليرى قدرة الله الخالق. ثم يطلب منه أن يحلل التاريخ بفكر نافذ ليجد أن التاريخ يشهد بالحق ويعترف به. ويتعجب الشاعر من كم التاريخ الذي كتبه العمانيون بأعمالهم العظيمة، فعُمان الأم هي أفضل من كتب التاريخ بالأعمال المجيدة.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-0-1">
+                        <h4>المعجم الشعري:</h4>
+                        <div class="word-item">
+                            <strong>قِفْ:</strong> توقف واثبت - فعل أمر للدلالة على الجدية والاهتمام (ضده: امض، تحرك)
+                        </div>
+                        <div class="word-item">
+                            <strong>المُبْصِرِينَ:</strong> أصحاب البصيرة والفهم العميق - جمع مبصر (ضده: العميان، الجاهلين)
+                        </div>
+                        <div class="word-item">
+                            <strong>مَرَائِيهِ:</strong> مناظره ومشاهده - جمع مرآة بمعنى المنظر
+                        </div>
+                        <div class="word-item">
+                            <strong>البَارِي:</strong> الخالق سبحانه وتعالى - من أسماء الله الحسنى
+                        </div>
+                        <div class="word-item">
+                            <strong>ثَاقِبٍ:</strong> نافذ وحاد - صفة للفكر المتعمق (ضده: بليد، ضعيف)
+                        </div>
+                        <div class="word-item">
+                            <strong>مَدِينٍ:</strong> مدين ومقر - من الدين بمعنى الاعتراف (ضده: منكر، جاحد)
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-0-2">
+                        <h4>المواطن الجمالية:</h4>
+                        <div class="beauty-item">
+                            <strong>الصورة الحسية:</strong> "قِفْ على العالم" - تجسيد العالم كمكان يمكن الوقوف عليه
+                        </div>
+                        <div class="beauty-item">
+                            <strong>التشبيه الضمني:</strong> تشبيه التاريخ بالكاتب الذي يملأ الأوراق
+                        </div>
+                        <div class="beauty-item">
+                            <strong>الطباق:</strong> بين "الواقفين" و"المبصرين" - تضاد في الحالة
+                        </div>
+                        <div class="beauty-item">
+                            <strong>الجناس:</strong> "يَمْلأُ الأَوْرَاقَ" تكرار للإيقاع الموسيقي
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-0-3">
+                        <h4>الأساليب البلاغية:</h4>
+                        <div class="rhetoric-item">
+                            <strong>أسلوب الأمر:</strong> "قِفْ" - "تَأَمَّلْهُ" - "تَدَبَّرْ" للحث والإرشاد
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>أسلوب التعجب:</strong> "يَا لَهُ كَمْ قَامَ" للإعجاب والتعظيم
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>التشبيه الجميل:</strong> "التَّارِيخَ بِالْحَقِّ مَدِينٍ" - الشاعر يتخيل التاريخ كأنه إنسان يعترف بالحقيقة ويشهد لها
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>التفضيل:</strong> "خَيْرَ الْخَالِقِينَ" - "خَيْرُ الْكَاتِبِينَ" للتعظيم
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المقطع الثاني -->
+            <div class="verse-section">
+                <div class="verse-header" onclick="toggleVerse(1)">
+                    <h3>المقطع الثاني: السبق في الإسلام</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="verse-content">
+                    <div class="verse-text">
+                        إِذْ وَفَدْنَا قَبْلَ أَنْ تبلغنا دَعْوَةَ الْمُخْتَارِ خَيْرِ الْمُرْسَلِينَ<br>
+                        فَلَنَا الفَضْلُ الَّذِي قَامَ بِهِ مَازِنٌ الطَّائِيُّ سَعْيًا لَا يَلِينُ<br>
+                        ثُمَّ وَافَى بِكِتَابِ الْمُصْطَفَى عَمْرٌو يَدْعُونَا فَكُنَّا الأَرْشَدِينَ<br>
+                        إِذْ قَرَاءه ابنا الْجُلندى طَاعَةً وَهُمَا إِذْ ذَاكَ فَوْقَ الْمَالِكِينَ
+                    </div>
+                    
+                    <div class="analysis-tabs">
+                        <button class="tab-button active" onclick="showTab(1, 0)">شرح المقطع</button>
+                        <button class="tab-button" onclick="showTab(1, 1)">المعجم الشعري</button>
+                        <button class="tab-button" onclick="showTab(1, 2)">المواطن الجمالية</button>
+                        <button class="tab-button" onclick="showTab(1, 3)">الأساليب البلاغية</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="tab-1-0">
+                        <h4>شرح المقطع:</h4>
+                        <div class="beauty-item">
+                            يفتخر الشاعر بأن العمانيين جاءوا وأقبلوا على الإسلام حتى قبل أن تصلهم الدعوة الرسمية من النبي محمد صلى الله عليه وسلم. ويذكر فضل مازن بن غضوبة الطائي الذي كان أول عماني يسلم وسعى بجد لا يتراجع. ثم جاء عمرو بن العاص بكتاب النبي يدعو العمانيين للإسلام فكانوا من أصحاب الرشد والهداية، حيث قرأ الكتاب ملكا عمان جيفر وعبد ابنا الجلندى بطاعة وهما في أعلى مراتب الحكم والسلطان.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-1-1">
+                        <h4>المعجم الشعري:</h4>
+                        <div class="word-item">
+                            <strong>وَفَدْنَا:</strong> جئنا وقدمنا مسرعين - من الوفود والقدوم (ضده: تأخرنا، ترددنا)
+                        </div>
+                        <div class="word-item">
+                            <strong>الْمُخْتَارِ:</strong> النبي محمد صلى الله عليه وسلم - المصطفى المختار
+                        </div>
+                        <div class="word-item">
+                            <strong>مَازِنٌ الطَّائِيُّ:</strong> مازن بن غضوبة الطائي - أول عماني أسلم
+                        </div>
+                        <div class="word-item">
+                            <strong>لَا يَلِينُ:</strong> لا يضعف ولا يتراجع - من اللين والضعف (ضده: يقوى، يثبت)
+                        </div>
+                        <div class="word-item">
+                            <strong>الأَرْشَدِينَ:</strong> أصحاب الرشد والهداية - جمع أرشد (ضده: الضالين، الغاوين)
+                        </div>
+                        <div class="word-item">
+                            <strong>ابنا الْجُلندى:</strong> جيفر وعبد ملكا عمان آنذاك
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-1-2">
+                        <h4>المواطن الجمالية:</h4>
+                        <div class="beauty-item">
+                            <strong>توحي إلى:</strong> "وَفَدْنَا" - توحي إلى سرعة الاستجابة والإقبال على الإسلام
+                        </div>
+                        <div class="beauty-item">
+                            <strong>توحي إلى:</strong> "فَوْقَ الْمَالِكِينَ" - توحي إلى علو المكانة والسلطان
+                        </div>
+                        <div class="beauty-item">
+                            <strong>التضاد:</strong> بين "قَبْلَ" و"ثُمَّ" - تدرج زمني جميل
+                        </div>
+                        <div class="beauty-item">
+                            <strong>الإيقاع:</strong> تكرار حرف النون في نهايات الأبيات للموسيقى الشعرية
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-1-3">
+                        <h4>الأساليب البلاغية:</h4>
+                        <div class="rhetoric-item">
+                            <strong>أسلوب القصر:</strong> "فَلَنَا الفَضْلُ" - قصر الفضل على العمانيين
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>الحال:</strong> "سَعْيًا لَا يَلِينُ" - حال مؤكدة لصفة الثبات
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>الظرفية:</strong> "إِذْ ذَاكَ" - ظرف زمان للتحديد التاريخي
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>التفضيل:</strong> "خَيْرِ الْمُرْسَلِينَ" - "الأَرْشَدِينَ" للتعظيم والتشريف
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المقطع الثالث -->
+            <div class="verse-section">
+                <div class="verse-header" onclick="toggleVerse(2)">
+                    <h3>المقطع الثالث: الوفاء والثبات</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="verse-content">
+                    <div class="verse-text">
+                        ثُمَّ لَمَّا قبض الْمُخْتَارُ لَمْ نَتريث أَنْ وَفَدْنَا مُسْرِعِينَ<br>
+                        حَيْثُ بَايَعْنَا خَلِيفَ الْمُصْطَفَى ثَانِيَ اثْنَيْنِ عَلَى الْحَقِّ الْمُبِينِ<br>
+                        فَالْتَزَمْنَا الْعَهْدَ لَمْ نَنْقُضْ عُرَى وَوَفَيْنَا عَنْ رِضًا حَقَّ الْمتين<br>
+                        مَا نزعنا عَنْ يَد لِلهِ يدَا مُنْذُ أَسْلَمْنَا وَلَا كُنَّا عمِينَ
+                    </div>
+                    
+                    <div class="analysis-tabs">
+                        <button class="tab-button active" onclick="showTab(2, 0)">شرح المقطع</button>
+                        <button class="tab-button" onclick="showTab(2, 1)">المعجم الشعري</button>
+                        <button class="tab-button" onclick="showTab(2, 2)">المواطن الجمالية</button>
+                        <button class="tab-button" onclick="showTab(2, 3)">الأساليب البلاغية</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="tab-2-0">
+                        <h4>شرح المقطع:</h4>
+                        <div class="beauty-item">
+                            يؤكد الشاعر أنه عندما توفي النبي محمد صلى الله عليه وسلم، لم يتردد العمانيون أو يتأخروا بل جاءوا مسرعين متعجلين للوفاء بالعهد. وبايعوا خليفة النبي أبا بكر الصديق رضي الله عنه على الحق الواضح. والتزموا بالعهد ولم ينقضوا روابطهم مع الإسلام، ووفوا عن رضا بحق الله القوي الثابت. ولم ينزعوا أيديهم من بيعة الله منذ أن أسلموا ولم يكونوا عمياناً أو جاهلين بل كانوا على بصيرة من أمرهم.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-2-1">
+                        <h4>المعجم الشعري:</h4>
+                        <div class="word-item">
+                            <strong>قُبِضَ:</strong> توفي ومات - تعبير مهذب عن الموت (ضده: وُلد، عاش)
+                        </div>
+                        <div class="word-item">
+                            <strong>نَتَرَيَّثْ:</strong> نتأخر أو نتردد - من الريث والتأني (ضده: نسرع، نبادر)
+                        </div>
+                        <div class="word-item">
+                            <strong>مُسْرِعِينَ:</strong> مسرعين ومتعجلين في المجيء - جمع مسرع (ضده: متأخرين، متباطئين)
+                        </div>
+                        <div class="word-item">
+                            <strong>ثَانِيَ اثْنَيْنِ:</strong> أبو بكر الصديق رضي الله عنه
+                        </div>
+                        <div class="word-item">
+                            <strong>عُرَى:</strong> روابط وصلات - جمع عروة (ضده: انقطاع، فصل)
+                        </div>
+                        <div class="word-item">
+                            <strong>الْمَتِينِ:</strong> القوي الثابت - من أسماء الله الحسنى (ضده: الضعيف، الواهن)
+                        </div>
+                        <div class="word-item">
+                            <strong>عَمِينَ:</strong> عميان أو جاهلين - جمع أعمى (ضده: مبصرين، عالمين)
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-2-2">
+                        <h4>المواطن الجمالية:</h4>
+                        <div class="beauty-item">
+                            <strong>الاستعارة:</strong> "نَنْقُضْ عُرَى" - تشبيه العهد بالحبل المعقود
+                        </div>
+                        <div class="beauty-item">
+                            <strong>توحي إلى:</strong> "يَد لِلهِ يدَا" - توحي إلى البيعة والطاعة
+                        </div>
+                        <div class="beauty-item">
+                            <strong>التضاد:</strong> بين "الْتَزَمْنَا" و"لَمْ نَنْقُضْ" - تأكيد بالإيجاب والسلب
+                        </div>
+                        <div class="beauty-item">
+                            <strong>الجناس الناقص:</strong> "وَفَدْنَا" و"وَفَيْنَا" - تشابه صوتي جميل
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab-2-3">
+                        <h4>الأساليب البلاغية:</h4>
+                        <div class="rhetoric-item">
+                            <strong>أسلوب النفي:</strong> "لَمْ نَتَرَيَّثْ" - "لَمْ نَنْقُضْ" - "مَا نَزَعْنَا" للتأكيد
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>الحال:</strong> "مُسْرِعِينَ" - حال تدل على السرعة والتعجل في الوفاء
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>الظرفية:</strong> "مُنْذُ أَسْلَمْنَا" - ظرف زمان يفيد الاستمرارية
+                        </div>
+                        <div class="rhetoric-item">
+                            <strong>التوكيد:</strong> تكرار معاني الوفاء والثبات بصيغ مختلفة
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الأسئلة الختامية -->
+            <div class="quiz-section">
+                <h2>الأسئلة الاختبارية</h2>
+                
+                <div class="quiz-question" onclick="toggleAnswer(0)">
+                    <strong>1. ما الغرض الشعري الرئيسي من هذه القصيدة؟</strong>
+                    <div class="quiz-answer" id="answer-0">
+                        الغرض الرئيسي هو الفخر بالتاريخ العماني وإبراز دور عمان في نشر الإسلام والثبات على العقيدة، مع التأكيد على السبق التاريخي للعمانيين في اعتناق الإسلام والوفاء للخلافة الراشدة.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(1)">
+                    <strong>2. استخرج من النص ثلاث كلمات تدل على السرعة والإسراع</strong>
+                    <div class="quiz-answer" id="answer-1">
+                        الكلمات التي تدل على السرعة: "وَفَدْنَا" (جئنا مسرعين)، "مُسْرِعِينَ" (متعجلين)، "لَمْ نَتَرَيَّثْ" (لم نتأخر أو نتردد). هذه الكلمات تؤكد حرص العمانيين على الاستجابة السريعة للإسلام.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(2)">
+                    <strong>3. ما المقصود بـ "البَارِي" و "الْمُخْتَارِ" في النص؟</strong>
+                    <div class="quiz-answer" id="answer-2">
+                        "البَارِي" يقصد به الله سبحانه وتعالى الخالق، وهو من أسماء الله الحسنى. "الْمُخْتَارِ" يقصد به النبي محمد صلى الله عليه وسلم، أي المصطفى المختار من الله لحمل الرسالة.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(3)">
+                    <strong>4. اذكر أسماء الشخصيات التاريخية المذكورة في النص</strong>
+                    <div class="quiz-answer" id="answer-3">
+                        الشخصيات التاريخية المذكورة: مازن بن غضوبة الطائي (أول عماني أسلم)، عمرو بن العاص (الذي جاء بكتاب النبي)، جيفر وعبد ابنا الجلندى (ملكا عمان)، وأبو بكر الصديق المشار إليه بـ "ثَانِيَ اثْنَيْنِ".
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(4)">
+                    <strong>5. ما ضد كلمة "الأَرْشَدِينَ" الواردة في النص؟</strong>
+                    <div class="quiz-answer" id="answer-4">
+                        ضد كلمة "الأَرْشَدِينَ" هو "الضالين" أو "الغاوين". فالأرشدون هم أصحاب الرشد والهداية والحكمة، بينما الضالون هم من فقدوا الطريق الصحيح.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(5)">
+                    <strong>6. استخرج من البيت الأول أسلوباً إنشائياً واذكر نوعه</strong>
+                    <div class="quiz-answer" id="answer-5">
+                        الأسلوب الإنشائي: "قِفْ" - وهو أسلوب أمر. الغرض منه الحث والإرشاد، حيث يدعو الشاعر القارئ للتوقف والتأمل في العالم من حوله.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(6)">
+                    <strong>7. ما دلالة التعبير "ثَانِيَ اثْنَيْنِ" في السياق التاريخي؟</strong>
+                    <div class="quiz-answer" id="answer-6">
+                        يشير إلى أبي بكر الصديق رضي الله عنه، وهو تعبير قرآني من قوله تعالى "ثاني اثنين إذ هما في الغار". يؤكد الشاعر أن العمانيين بايعوا الخليفة الأول بعد وفاة النبي صلى الله عليه وسلم.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(7)">
+                    <strong>8. اشرح معنى "نَنْقُضْ عُرَى" وبين نوع الصورة البيانية</strong>
+                    <div class="quiz-answer" id="answer-7">
+                        "نَنْقُضْ عُرَى" تعني نكسر الروابط والصلات. الصورة البيانية هي استعارة، حيث شبه العهد والميثاق بالحبل المعقود الذي له عُرى (عقد)، فنقض العرى يعني كسر العهد.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(8)">
+                    <strong>9. ما الفرق بين "وَفَدْنَا" في البيت الأول من المقطع الثاني والثالث؟</strong>
+                    <div class="quiz-answer" id="answer-8">
+                        في المقطع الثاني "وَفَدْنَا" تعني جئنا للإسلام قبل وصول الدعوة الرسمية. في المقطع الثالث تعني جئنا مسرعين لمبايعة أبي بكر الصديق بعد وفاة النبي. كلاهما يدل على سرعة الاستجابة العمانية.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(9)">
+                    <strong>10. اذكر ثلاث صفات حميدة للعمانيين وردت في النص</strong>
+                    <div class="quiz-answer" id="answer-9">
+                        الصفات الحميدة: السبق في الإسلام (وفدنا قبل أن تبلغنا الدعوة)، الوفاء بالعهد (التزمنا العهد لم ننقض عرى)، الثبات على المبدأ (ما نزعنا عن يد لله يداً منذ أسلمنا).
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(10)">
+                    <strong>11. ما المقصود بقول الشاعر "عُمَانُ الأُمُّ خَيْرُ الْكَاتِبِينَ"؟</strong>
+                    <div class="quiz-answer" id="answer-10">
+                        يقصد أن عُمان كتبت التاريخ بأعمالها العظيمة وإنجازاتها المجيدة، فهي أفضل من سجل التاريخ بالأفعال النبيلة والمواقف المشرفة، وليس بالكلمات فقط.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(11)">
+                    <strong>12. استخرج من النص مثالاً على التشابه الصوتي بين الكلمات</strong>
+                    <div class="quiz-answer" id="answer-11">
+                        مثال على التشابه الصوتي: "وَفَدْنَا" و "وَفَيْنَا" - حيث تتشابه الكلمتان في معظم الحروف مع اختلاف بسيط، مما يخلق إيقاعاً موسيقياً جميلاً في النص.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(12)">
+                    <strong>13. ما الحكمة من استخدام الشاعر لأسلوب النفي المتكرر في المقطع الأخير؟</strong>
+                    <div class="quiz-answer" id="answer-12">
+                        استخدم الشاعر النفي المتكرر (لم نتريث، لم ننقض، ما نزعنا، لا كنا) لتأكيد ثبات العمانيين ووفائهم، فالنفي هنا يقوي المعنى ويؤكد عدم تراجعهم أو تغيير موقفهم.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(13)">
+                    <strong>14. اربط بين مضمون القصيدة والأحداث التاريخية في عمان</strong>
+                    <div class="quiz-answer" id="answer-13">
+                        تعكس القصيدة أحداثاً تاريخية حقيقية: إسلام مازن بن غضوبة قبل الهجرة، وصول كتاب النبي مع عمرو بن العاص، إسلام ملكي عمان جيفر وعبد، ومبايعة العمانيين لأبي بكر الصديق، مما يؤكد الدور المبكر لعمان في الإسلام.
+                    </div>
+                </div>
+                
+                <div class="quiz-question" onclick="toggleAnswer(14)">
+                    <strong>15. ما العاطفة المسيطرة على الشاعر في هذا النص؟</strong>
+                    <div class="quiz-answer" id="answer-14">
+                        العاطفة المسيطرة هي الفخر والاعتزاز بالتاريخ العماني المجيد. يظهر ذلك من خلال استخدام ألفاظ التعظيم والتفضيل مثل "خير الكاتبين" و"الأرشدين"، والتأكيد على المواقف المشرفة للعمانيين.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleVerse(index) {
+            const content = document.querySelectorAll('.verse-content')[index];
+            const icon = document.querySelectorAll('.toggle-icon')[index];
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        function showTab(verseIndex, tabIndex) {
+            // إخفاء جميع التبويبات للمقطع المحدد
+            const tabs = document.querySelectorAll(`#tab-${verseIndex}-0, #tab-${verseIndex}-1, #tab-${verseIndex}-2, #tab-${verseIndex}-3`);
+            const buttons = document.querySelectorAll('.verse-section')[verseIndex].querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // إظهار التبويب المحدد
+            document.getElementById(`tab-${verseIndex}-${tabIndex}`).classList.add('active');
+            buttons[tabIndex].classList.add('active');
+        }
+        
+        function toggleAnswer(index) {
+            const answer = document.getElementById(`answer-${index}`);
+            answer.classList.toggle('show');
+        }
+        
+        // فتح المقطع الأول افتراضياً
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleVerse(0);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990921a13505f9d7',t:'MTc2MDgwMTk5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
