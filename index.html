@@ -266,15 +266,21 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
-        .channel-link {
-            margin-top: 12px;
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        .channel-link a {
+        .channel-link, .pdf-link {
+            margin-top: 0;
+        }
+        
+        .channel-link a, .pdf-link a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             color: white;
             text-decoration: none;
             padding: 12px 20px;
@@ -282,7 +288,19 @@
             font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .channel-link a {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .pdf-link a {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
         }
         
         .channel-link a:hover {
@@ -291,7 +309,13 @@
             background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
         }
         
-        .whatsapp-icon {
+        .pdf-link a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+        }
+        
+        .whatsapp-icon, .pdf-icon {
             font-size: 1.2rem;
         }
         
@@ -347,6 +371,16 @@
             
             .teacher-info h3 {
                 font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .channel-link, .pdf-link {
+                flex: 1;
+                max-width: 250px;
             }
         }
         
@@ -407,6 +441,15 @@
             
             .teacher-info h3 {
                 font-size: 2rem;
+            }
+            
+            .footer-links {
+                gap: 25px;
+            }
+            
+            .channel-link a, .pdf-link a {
+                font-size: 1.1rem;
+                padding: 15px 25px;
             }
         }
     </style>
@@ -793,11 +836,19 @@
             <div class="footer-content">
                 <div class="teacher-info">
                     <h3>إعداد الأستاذ: خليل البلوشي</h3>
-                    <div class="channel-link">
-                        <a href="https://whatsapp.com/channel/0029VamotBKCxoAy3fzUcv3T" target="_blank" rel="noopener noreferrer">
-                            <span class="whatsapp-icon">📱</span>
-                            رابط القناة على واتساب
-                        </a>
+                    <div class="footer-links">
+                        <div class="channel-link">
+                            <a href="https://whatsapp.com/channel/0029VamotBKCxoAy3fzUcv3T" target="_blank" rel="noopener noreferrer">
+                                <span class="whatsapp-icon">📱</span>
+                                رابط القناة على واتساب
+                            </a>
+                        </div>
+                        <div class="pdf-link">
+                            <a href="https://drive.google.com/file/d/13hbk4a5iMSxhCErCsBn83clMCeFd1S0h/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                                <span class="pdf-icon">📄</span>
+                                رابط الشرح بصيغة PDF
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
